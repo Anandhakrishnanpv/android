@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/lifecycleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lifecycle events will appear here"
+        android:textSize="18sp"
+        android:padding="8dp" />
+
+    <Button
+        android:id="@+id/btnClickMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Click Me"
+        android:marginTop="20dp"/>
+        
+</LinearLayout>
+package com.example.myapplication;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class OnFunctionActivity extends AppCompatActivity {
+
+    TextView lifecycleText;
+    Button btnClickMe;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_onfunction);
+
+        lifecycleText = findViewById(R.id.lifecycleText);
+        btnClickMe = findViewById(R.id.btnClickMe);
+
+        lifecycleText.append("\nonCreate called");
+
+        btnClickMe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(OnFunctionActivity.this, "Button Clicked!", Toast.LENGTH_SHORT).show();
+                lifecycleText.append("\nButton clicked!");
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        lifecycleText.append("\nonStart called");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        lifecycleText.append("\nonResume called");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        lifecycleText.append("\nonPause called");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        lifecycleText.append("\nonStop called");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        lifecycleText.append("\nonRestart called");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        lifecycleText.append("\nonDestroy called");
+    }
+}
