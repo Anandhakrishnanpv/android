@@ -1,0 +1,165 @@
+MainActivity.java
+
+
+package com.example.prgrm2;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+public class MainActivity extends AppCompatActivity {
+
+    Button bt1;
+    EditText et1,et2;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+
+        bt1 = (Button)findViewById(R.id.button);
+        et1 = (EditText) findViewById(R.id.editTextText1);
+        et2 = (EditText) findViewById(R.id.editTextText2);
+
+        bt1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String username = et1.getText().toString();
+                String password = et2.getText().toString();
+
+                if (username.equals("admin") && password.equals("1234")){
+                    Toast.makeText(getApplicationContext(), "Login Successful!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Invalid Credentials", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+    }
+}
+---------------------------------------------------------------------------------
+
+colors.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="red">#FA5959</color>
+    <color name="cyan">#31BFBF</color>
+    <color name="pink">#FDAABB</color>
+    <color name="green">#008000</color>
+    <color name="orange">#FA760A</color>
+    <color name="beige">#F5F5DC</color>
+    <color name="lavender">#E6E6FA</color>
+    <color name="wheat">#F5DEB3</color>
+    <color name="grey">#555555</color>
+    <color name="violet">#7F00FF</color>
+
+</resources>
+---------------------------------------------------------------------------------
+actitvity_main.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_marginRight="50dp"
+    android:layout_marginLeft="50dp"
+    android:layout_marginTop="50dp"
+    android:layout_marginBottom="50dp"
+    android:background="@color/lavender"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Login Page"
+            android:layout_gravity="center"
+            android:textColor="@color/violet"
+            android:textSize="30dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:text="Username:"
+            android:textSize="18dp"
+            android:textAlignment="center"
+            android:textColor="@color/grey"/>
+
+        <EditText
+            android:id="@+id/editTextText1"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:hint="Enter the Username"
+            android:textSize="15dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:text="Password:"
+            android:textSize="18dp"
+            android:textAlignment="center"
+            android:textColor="@color/grey"/>
+
+        <EditText
+            android:id="@+id/editTextText2"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:hint="Enter the Password"
+            android:textSize="15dp"
+            android:inputType="textPassword"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/lavender"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+        <Button
+            android:id="@+id/button"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:text="Login"
+            />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
